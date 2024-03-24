@@ -1,0 +1,37 @@
+services:
+  accounts:
+    image: "aldinash/accounts:v1"
+    container_name: accounts-microservice
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank
+  cards:
+    image: "aldinash/cards:v1"
+    container_name: cards-microservice
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank
+  loans:
+    image: "aldinash/loans:v1"
+    container_name: loans-microservice
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank
+networks:
+  bank:
+    driver: "bridge"
